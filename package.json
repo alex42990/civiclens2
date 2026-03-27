@@ -1,0 +1,16 @@
+{
+  "name": "civiclens2",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test --if-present",
+    "lint": "pnpm -r lint --if-present",
+    "db:generate": "pnpm --filter @civiclens/db generate",
+    "db:migrate": "pnpm --filter @civiclens/db migrate",
+    "db:push": "pnpm --filter @civiclens/db push"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
