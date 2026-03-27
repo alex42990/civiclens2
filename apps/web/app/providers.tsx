@@ -6,9 +6,8 @@ import { createApolloClient } from "@/lib/graphql";
 
 const client = createApolloClient();
 
-const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
-
 export function Providers({ children }: { children: React.ReactNode }) {
+  const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
   const inner = <ApolloProvider client={client}>{children}</ApolloProvider>;
 
   if (!clerkKey) {

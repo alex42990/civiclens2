@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const NAV_LINKS = [
   { href: "/candidates", label: "Candidates" },
@@ -11,35 +12,24 @@ const NAV_LINKS = [
 ];
 
 function AuthButtons() {
-  try {
-    const {
-      SignInButton,
-      SignedIn,
-      SignedOut,
-      UserButton,
-    } = require("@clerk/nextjs");
-
-    if (!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY) {
-      return null;
-    }
-
-    return (
-      <>
-        <SignedOut>
-          <SignInButton mode="modal">
-            <button className="text-sm bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
-              Sign In
-            </button>
-          </SignInButton>
-        </SignedOut>
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
-      </>
-    );
-  } catch {
+  if (!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY) {
     return null;
   }
+
+  return (
+    <>
+      <SignedOut>
+        <SignInButton mode="modal">
+          <button className="text-sm bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+            Sign In
+          </button>
+        </SignInButton>
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
+    </>
+  );
 }
 
 export function NavBar() {

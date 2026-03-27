@@ -34,6 +34,10 @@ pnpm install
 # Set up environment variables
 cp apps/api/.env.example apps/api/.env
 cp apps/web/.env.example apps/web/.env
+cp services/ingest/.env.example services/ingest/.env
+
+# The db package also needs a DATABASE_URL for Drizzle CLI commands
+echo 'DATABASE_URL=postgresql://civiclens:civiclens@localhost:5432/civiclens' > packages/db/.env
 
 # Push database schema
 pnpm db:push
